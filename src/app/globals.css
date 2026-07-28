@@ -1,0 +1,216 @@
+@import "tailwindcss";
+
+@theme {
+  --color-canvas: #FAF9F5;
+  --color-ink: #101010;
+  --color-ink-muted: #666666;
+  --color-ink-light: #8E8E93;
+  --color-indigo: #4338FF;
+  --color-indigo-dark: #3228D9;
+  --color-indigo-light: #6259FF;
+  --color-indigo-glow: rgba(67, 56, 255, 0.15);
+  --color-lime: #D6FF3D;
+  --color-lime-dark: #B8E61A;
+  --color-lime-glow: rgba(214, 255, 61, 0.3);
+  --color-surface: #FFFFFF;
+  --color-surface-subtle: #F3F1EA;
+  --color-border: #E8E5DC;
+  --color-border-hover: #D0CCC0;
+
+  --color-fog: #F2F3F1;
+  --color-cargo: #FF5A1F;
+  --color-freight: #16233E;
+  --color-stamp: #FFCC33;
+
+  --radius-xs: 8px;
+  --radius-sm: 12px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-xl: 32px;
+  --radius-full: 9999px;
+
+  --font-sans: var(--font-geist-sans), system-ui, -apple-system, sans-serif;
+  --font-mono: var(--font-geist-mono), monospace;
+}
+
+:root {
+  --background: #FAF9F5;
+  --foreground: #101010;
+}
+
+html {
+  scroll-behavior: auto !important; /* Lenis handles smooth scroll */
+  background-color: #FAF9F5;
+  color: #101010;
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: #FAF9F5;
+  color: #101010;
+  overflow-x: hidden;
+  position: relative;
+  min-height: 100vh;
+}
+
+/* Fluid Typography Utilities */
+.hero-headline {
+  font-size: clamp(3.2rem, 6.5vw + 1rem, 5.75rem);
+  line-height: 1.05;
+  letter-spacing: -0.035em;
+  font-weight: 800;
+}
+
+.section-title {
+  font-size: clamp(2.2rem, 4.5vw + 0.5rem, 3.85rem);
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  font-weight: 750;
+}
+
+/* Custom Noise Texture Overlay */
+.noise-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* Custom Cursor Hide default when custom cursor is active */
+@media (min-width: 1024px) {
+  .custom-cursor-active,
+  .custom-cursor-active * {
+    cursor: none !important;
+  }
+}
+
+/* Glassmorphism Classes */
+.glass-card {
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(232, 229, 220, 0.8);
+  box-shadow: 0 20px 40px -15px rgba(16, 16, 16, 0.05), 0 0 1px 1px rgba(255, 255, 255, 0.9) inset;
+}
+
+.glass-card-dark {
+  background: rgba(20, 20, 24, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 24px 48px -12px rgba(0, 0, 0, 0.5);
+}
+
+.glass-nav {
+  background: rgba(250, 249, 245, 0.82);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(232, 229, 220, 0.7);
+}
+
+/* Glowing Border Effect on Hover */
+.hover-glow {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hover-glow:hover {
+  border-color: rgba(67, 56, 255, 0.4);
+  box-shadow: 0 16px 36px -10px rgba(67, 56, 255, 0.18), 0 0 0 1px rgba(67, 56, 255, 0.2);
+}
+
+/* Marquee Animation */
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 35s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* Dashed SVG Motion path styling */
+.dashed-route-path {
+  stroke-dasharray: 6, 6;
+  animation: dashMove 20s linear infinite;
+}
+
+@keyframes dashMove {
+  to {
+    stroke-dashoffset: -120;
+  }
+}
+
+.tag-notch {
+  position: relative;
+}
+.tag-notch::before {
+  content: "";
+  position: absolute;
+  left: -5px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 10px;
+  height: 10px;
+  background-color: var(--color-fog);
+  border-radius: 9999px;
+  border: 1px solid rgba(21, 23, 15, 0.08);
+}
+
+/* Lenis Scroll Rules */
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+/* Scrollbar customization */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #FAF9F5;
+}
+::-webkit-scrollbar-thumb {
+  background: #D0CCC0;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #4338FF;
+}
+
+/* Accessibility: WCAG 2.3.3 Prefers Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .animate-marquee,
+  .dashed-route-path {
+    animation: none !important;
+  }
+}
