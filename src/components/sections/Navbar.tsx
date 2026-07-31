@@ -40,11 +40,9 @@ export function Navbar({ onOpenTrackModal }: NavbarProps) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
         {/* Brand Logo */}
         <a href="#" className="flex items-center gap-2.5 group" data-cursor="iLogiTrack">
-          <img
-            src="/icon.svg"
-            alt="iLogiTrack Logo"
-            className="w-10 h-10 rounded-2xl shadow-md group-hover:scale-105 transition-transform"
-          />
+          <div className="w-10 h-10 rounded-2xl bg-[#101010] text-[#D6FF3D] flex items-center justify-center shadow-md group-hover:scale-105 transition-transform border border-[#4338FF]/30">
+            <Package className="w-5 h-5 text-[#D6FF3D]" />
+          </div>
           <div className="flex flex-col">
             <span className="text-xl font-bold tracking-tight text-[#101010] flex items-center gap-1">
               iLogiTrack
