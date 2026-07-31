@@ -25,7 +25,12 @@ export const metadata: Metadata = {
   title: "iLogiTrack — Know where it is. Always.",
   description: "Real-time visibility for every truck, container, and parcel in your network — from first mile to doorstep.",
   icons: {
-    icon: "/favicon.ico",
+    icon: [
+      { url: "/icon.svg", type: "image/svg+xml" },
+      { url: "/favicon.ico" },
+    ],
+    shortcut: "/icon.svg",
+    apple: "/icon.svg",
   },
 };
 
