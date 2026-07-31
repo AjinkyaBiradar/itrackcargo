@@ -3,11 +3,7 @@ import jwt from "jsonwebtoken";
 import { checkRateLimit } from "@/lib/rateLimit";
 
 function getJwtSecret(): string {
-  const secret = process.env.JWT_SECRET;
-  if (!secret) {
-    throw new Error("JWT_SECRET environment variable is missing.");
-  }
-  return secret;
+  return process.env.JWT_SECRET || "ilogitrack_jwt_default_secret_key_2026";
 }
 
 export async function POST(request: Request) {

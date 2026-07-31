@@ -46,6 +46,14 @@ export function SignupForm() {
       if (data.token) {
         localStorage.setItem("ilogitrack_jwt", data.token);
       }
+      localStorage.setItem(
+        "ilogitrack_user",
+        JSON.stringify({
+          name: name || (email ? email.split("@")[0] : "Ajinkya Biradar"),
+          email: email,
+          company: company || "Apex Logistics India Fleet",
+        })
+      );
 
       setTimeout(() => {
         router.push("/dashboard");
