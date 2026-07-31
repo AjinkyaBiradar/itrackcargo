@@ -59,9 +59,11 @@ export function Footer() {
           {/* Brand & Newsletter (5-col) */}
           <div className="lg:col-span-5 space-y-6">
             <a href="#" className="flex items-center gap-2.5">
-              <div className="w-10 h-10 rounded-2xl bg-[#101010] text-[#D6FF3D] flex items-center justify-center shadow-md">
-                <Package className="w-5 h-5" />
-              </div>
+              <img
+                src="/icon.svg"
+                alt="iLogiTrack Logo"
+                className="w-10 h-10 rounded-2xl shadow-md"
+              />
               <span className="text-xl font-bold tracking-tight text-[#101010]">
                 iLogiTrack
               </span>
