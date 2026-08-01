@@ -59,6 +59,3 @@ It provides sub-second GPS vehicle tracking, automated AIS-140 device pairing, d
 
 ---
 
-## 📜 License
-
-Distributed under the **MIT License**. Created for modern logistics, fleet management, and supply chain tracking across India.
